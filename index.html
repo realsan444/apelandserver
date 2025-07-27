@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>APE LAND</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background-color: #121212;
+      font-family: 'Arial Black', sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      background: url('ape.jpg');
+      background-size: cover;
+      background-position: center;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin-bottom: 80px;
+      filter: drop-shadow(0 0 10px white);
+    }
+
+    .button-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .ape-button {
+      background-color: #1f1f1f;
+      color: white;
+      font-size: 1.5rem;
+      padding: 20px 40px;
+      border: 2px solid #888;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 6px white);
+    }
+
+    .ape-button:hover {
+      background-color: #333;
+      border-color: #fff;
+      transform: scale(1.05);
+    }
+
+    #application-frame, #finished-frame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #1a1a1a;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 30px;
+      overflow-y: auto;
+      z-index: 999;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    form {
+      max-width: 600px;
+      width: 100%;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .question {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: white;
+      filter: drop-shadow(0 0 3px white);
+    }
+
+    input[type="radio"] {
+      transform: scale(1.8);
+      margin-right: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    input[type="radio"]:checked {
+      filter: drop-shadow(0 0 5px white);
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #222;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 8px;
+      resize: vertical;
+      font-size: 1rem;
+      filter: drop-shadow(0 0 3px white);
+    }
+
+    .submit-button {
+      background-color: #444;
+      color: white;
+      font-size: 1.3rem;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+      filter: drop-shadow(0 0 5px white);
+    }
+
+    .submit-button:hover {
+      background-color: #666;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #ff4444;
+      text-align: center;
+      filter: drop-shadow(0 0 5px red);
+    }
+
+    #finished-frame h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 40px;
+      filter: drop-shadow(0 0 8px white);
+    }
+
+    #finished-frame img {
+      margin-top: 30px;
+      max-width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 0 20px white;
+    }
+  </style>
+</head>
+<body>
+  <h1>WELCOME TO APE LAND WEBSITE!!!!</h1>
+
+  <div class="button-container">
+    <button class="ape-button">DISCORD SERVER</button>
+    <button class="ape-button" onclick="openForm()">applicate</button>
+    <button class="ape-button">BANANA TIME</button>
+  </div>
+
+  <!-- Application Form -->
+  <div id="application-frame">
+    <form id="modForm">
+      <div class="question">
+        <label>Are you a good ape?</label>
+        <input type="radio" name="goodApe" value="Yes" required> Yes
+        <input type="radio" name="goodApe" value="No" required> No
+      </div>
+
+      <div class="question">
+        <label>If we ping a lot will you leave?</label>
+        <input type="radio" name="pingLeave" value="Yes" required> Yes
+        <input type="radio" name="pingLeave" value="No" required> No
+      </div>
+
+      <div class="question">
+        <label>Have you moderated before?</label>
+        <input type="radio" name="moderatedBefore" value="Yes" required> Yes
+        <input type="radio" name="moderatedBefore" value="No" required> No
+      </div>
+
+      <div class="question">
+        <label>Will you abuse power?</label>
+        <input type="radio" name="abusePower" value="Yes" required> Yes
+        <input type="radio" name="abusePower" value="No" required> No
+      </div>
+
+      <div class="question">
+        <label>Are you active daily?</label>
+        <input type="radio" name="activeDaily" value="Yes" required> Yes
+        <input type="radio" name="activeDaily" value="No" required> No
+      </div>
+
+      <div class="question">
+        <label>Tell us why you want to be a mod:</label>
+        <textarea name="whyMod" rows="4" required></textarea>
+      </div>
+
+      <div class="question">
+        <label>Give us your Discord name (e.g. ApeKing):</label>
+        <input type="text" name="discordName" required />
+      </div>
+
+      <button type="submit" class="submit-button">Submit Application</button>
+      <footer>(if you reload you have to restart)</footer>
+    </form>
+  </div>
+
+  <!-- Finished Frame -->
+  <div id="finished-frame">
+    <h2>FINISHED.<br>WE HAVE SENT TO COOWNERS AND OWNER.<br>YOU ARE SUPER EPIK</h2>
+    <img src="success.png" alt="Success Image" />
+    <audio id="successSound" src="submit.mp3" preload="auto"></audio>
+  </div>
+
+  <script>
+    function openForm() {
+      const frame = document.getElementById("application-frame");
+      frame.style.display = "flex";
+      frame.scrollIntoView({ behavior: "smooth" });
+    }
+
+    const form = document.getElementById("modForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const answers = Array.from(formData.entries())
+        .map(([key, value]) => `**${key}**: ${value}`)
+        .join("\n");
+
+      const webhookUrl = 'https://discord.com/api/webhooks/1398926460659437568/VqVaybqPCUHc0UJ-QjrxgKafUOruDokB24ehJS2D3eQyvMRW-gN0Rz2RNk9Yka25YWjd'; // replace this
+
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: `📝 New APE LAND Mod Application:\n\n${answers}`
+        })
+      });
+
+      document.getElementById("application-frame").style.display = "none";
+      document.getElementById("finished-frame").style.display = "flex";
+      document.getElementById("successSound").play();
+    });
+  </script>
+</body>
+</html>
